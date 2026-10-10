@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Владислав Ким — Репетитор по русскому языку | Подготовка к ОГЭ/ЕГЭ</title>
+<meta name="description" content="Репетитор по русскому языку 5–11 класс. Подготовка к ЕГЭ, ОГЭ, итоговому сочинению, олимпиадам. 8 стобалльников. Опыт 5 лет. Пробное занятие бесплатно.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-900: #0B1E3F;
+    --blue-700: #17356B;
+    --blue-500: #2A4E96;
+    --blue-100: #E8EEF9;
+    --beige-500: #E8D5B7;
+    --beige-300: #F4E9D6;
+    --beige-100: #FAF4EA;
+    --ink: #0B1E3F;
+    --muted: #5A6B85;
+    --bg: #FDFBF7;
+    --white: #FFFFFF;
+    --radius: 16px;
+    --radius-lg: 24px;
+    --shadow-sm: 0 2px 12px rgba(11, 30, 63, 0.06);
+    --shadow-md: 0 12px 32px rgba(11, 30, 63, 0.10);
+    --shadow-lg: 0 24px 60px rgba(11, 30, 63, 0.14);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+  }
+  h1, h2, h3, h4 { font-family: 'Manrope', 'Inter', sans-serif; line-height: 1.2; letter-spacing: -0.02em; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  /* NAV */
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(253, 251, 247, 0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(11, 30, 63, 0.06);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-family: 'Manrope', sans-serif; }
+  .logo-mark {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--blue-700), var(--blue-500));
+    color: var(--beige-500); display: grid; place-items: center;
+    font-size: 15px; font-weight: 800;
+  }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { font-size: 15px; color: var(--muted); font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--blue-700); }
+  .nav-cta {
+    padding: 10px 20px; border-radius: 999px;
+    background: var(--blue-900); color: var(--white);
+    font-weight: 600; font-size: 14px; transition: transform .2s, box-shadow .2s;
+  }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  @media (max-width: 900px) { .nav-links { display: none; } }
+
+  /* HERO */
+  .hero { padding: 72px 0 96px; position: relative; overflow: hidden; }
+  .hero::before {
+    content: ''; position: absolute; top: -200px; right: -200px; width: 500px; height: 500px;
+    background: radial-gradient(circle, var(--beige-300) 0%, transparent 70%);
+    border-radius: 50%; z-index: 0;
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px; border-radius: 999px;
+    background: var(--beige-100); color: var(--blue-700);
+    font-size: 13px; font-weight: 600; border: 1px solid var(--beige-500);
+  }
+  .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue-500); }
+  .hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; margin: 20px 0 12px; color: var(--blue-900); }
+  .hero h1 .accent { color: var(--blue-500); }
+  .hero .spec {
+    display: inline-block; padding: 4px 12px; border-radius: 8px;
+    background: var(--blue-100); color: var(--blue-700);
+    font-size: 14px; font-weight: 600; margin-bottom: 16px;
+  }
+  .hero p.lead { font-size: 18px; color: var(--muted); max-width: 540px; margin-bottom: 32px; }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 14px 26px; border-radius: 12px;
+    font-weight: 600; font-size: 15px; cursor: pointer;
+    border: 1px solid transparent; transition: all .2s;
+    font-family: inherit;
+  }
+  .btn-primary { background: var(--blue-900); color: var(--white); }
+  .btn-primary:hover { background: var(--blue-700); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .btn-secondary { background: transparent; color: var(--blue-900); border-color: rgba(11, 30, 63, 0.15); }
+  .btn-secondary:hover { background: var(--white); border-color: var(--blue-900); }
+
+  .hero-photo-wrap { position: relative; }
+  .hero-photo {
+    aspect-ratio: 4/5; border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--blue-100), var(--beige-300));
+    display: grid; place-items: center; overflow: hidden;
+    box-shadow: var(--shadow-lg); position: relative;
+  }
+  .hero-photo::after { content: '👨‍🏫'; font-size: 120px; opacity: 0.35; }
+  .hero-photo-label {
+    position: absolute; bottom: 20px; left: 20px; right: 20px;
+    background: var(--white); padding: 14px 18px; border-radius: 14px;
+    box-shadow: var(--shadow-md); font-size: 14px;
+  }
+  .hero-photo-label strong { display: block; font-family: 'Manrope', sans-serif; color: var(--blue-900); }
+  .hero-photo-label span { color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-photo { aspect-ratio: 1/1; max-width: 400px; margin: 0 auto; }
+    .hero { padding: 40px 0 60px; }
+  }
+
+  /* SECTION */
+  section { padding: 96px 0; }
+  .section-head { text-align: center; margin-bottom: 56px; }
+  .section-tag {
+    display: inline-block; padding: 6px 14px; border-radius: 999px;
+    background: var(--beige-100); color: var(--blue-700);
+    font-size: 13px; font-weight: 600; margin-bottom: 16px;
+  }
+  .section-head h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: var(--blue-900); margin-bottom: 14px; }
+  .section-head p { color: var(--muted); max-width: 620px; margin: 0 auto; font-size: 17px; }
+
+  /* STATS */
+  .stats { background: var(--blue-900); color: var(--white); padding: 72px 0; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
+  .stat-num {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 800;
+    color: var(--beige-500); line-height: 1; margin-bottom: 10px;
+  }
+  .stat-label { font-size: 15px; color: rgba(255,255,255,0.7); }
+  @media (max-width: 720px) { .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; } }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .about-text h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom: 20px; color: var(--blue-900); }
+  .about-text p { color: var(--muted); margin-bottom: 16px; font-size: 17px; }
+  .about-list { list-style: none; display: grid; gap: 14px; }
+  .about-list li {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 16px 20px; background: var(--white); border-radius: 14px;
+    box-shadow: var(--shadow-sm); font-size: 15px;
+  }
+  .about-list li::before {
+    content: '✓'; flex-shrink: 0;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--beige-100); color: var(--blue-700);
+    display: grid; place-items: center; font-weight: 700; font-size: 13px;
+  }
+  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  /* PRICING */
+  .pricing { background: var(--beige-100); }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .price-card {
+    background: var(--white); border-radius: var(--radius-lg);
+    padding: 36px 32px; display: flex; flex-direction: column;
+    border: 1px solid rgba(11, 30, 63, 0.06);
+    transition: transform .25s, box-shadow .25s;
+  }
+  .price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .price-card.featured { background: var(--blue-900); color: var(--white); position: relative; overflow: hidden; }
+  .price-card.featured::before {
+    content: 'ПОПУЛЯРНОЕ';
+    position: absolute; top: 20px; right: -34px;
+    background: var(--beige-500); color: var(--blue-900);
+    font-size: 11px; font-weight: 800; padding: 6px 40px;
+    transform: rotate(45deg); letter-spacing: 1px;
+  }
+  .price-card h3 { font-size: 22px; margin-bottom: 8px; }
+  .price-card .desc { color: var(--muted); font-size: 14px; margin-bottom: 24px; min-height: 42px; }
+  .price-card.featured .desc { color: rgba(255,255,255,0.7); }
+  .price-value {
+    font-family: 'Manrope', sans-serif;
+    font-size: 40px; font-weight: 800; color: var(--blue-900);
+    margin-bottom: 6px; line-height: 1;
+  }
+  .price-card.featured .price-value { color: var(--beige-500); }
+  .price-unit { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+  .price-card.featured .price-unit { color: rgba(255,255,255,0.6); }
+  .price-features { list-style: none; display: grid; gap: 12px; margin-bottom: 28px; flex-grow: 1; }
+  .price-features li { font-size: 14.5px; display: flex; gap: 10px; }
+  .price-features li::before { content: '·'; color: var(--blue-500); font-weight: 900; font-size: 20px; line-height: 1; }
+  .price-card.featured .price-features li::before { color: var(--beige-500); }
+  .price-card .btn { width: 100%; }
+  .price-card.featured .btn-primary { background: var(--beige-500); color: var(--blue-900); }
+  .price-card.featured .btn-primary:hover { background: var(--white); }
+  @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+  /* PROGRAMS */
+  .programs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 24px; }
+  .program {
+    background: var(--white); border-radius: var(--radius);
+    padding: 26px 24px; border: 1px solid rgba(11, 30, 63, 0.06);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .program:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .program-icon { font-size: 26px; margin-bottom: 12px; }
+  .program h4 { font-size: 16px; margin-bottom: 6px; color: var(--blue-900); }
+  .program p { font-size: 14px; color: var(--muted); }
+  @media (max-width: 900px) { .programs-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .programs-grid { grid-template-columns: 1fr; } }
+
+  /* STEPS */
+  .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .step {
+    background: var(--white); border-radius: var(--radius);
+    padding: 32px 24px; border: 1px solid rgba(11, 30, 63, 0.06);
+    position: relative;
+  }
+  .step-num {
+    position: absolute; top: -14px; left: 24px;
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--blue-900); color: var(--beige-500);
+    display: grid; place-items: center; font-weight: 800;
+    font-family: 'Manrope', sans-serif;
+  }
+  .step-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: var(--beige-100); display: grid; place-items: center;
+    font-size: 24px; margin: 16px 0 20px;
+  }
+  .step h3 { font-size: 18px; margin-bottom: 10px; }
+  .step p { color: var(--muted); font-size: 14.5px; }
+  @media (max-width: 900px) { .steps-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .steps-grid { grid-template-columns: 1fr; } }
+
+  /* FORMAT */
+  .format { background: var(--beige-100); }
+  .format-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .format-card {
+    background: var(--white); border-radius: var(--radius-lg);
+    padding: 36px 32px; display: flex; flex-direction: column;
+    border: 1px solid rgba(11, 30, 63, 0.06);
+  }
+  .format-card h3 { font-size: 22px; margin-bottom: 10px; color: var(--blue-900); }
+  .format-card > p { color: var(--muted); font-size: 15px; margin-bottom: 22px; }
+  .format-features { list-style: none; display: grid; gap: 12px; }
+  .format-features li {
+    font-size: 14.5px; display: flex; gap: 10px; align-items: flex-start;
+  }
+  .format-features li::before {
+    content: '✓'; flex-shrink: 0;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--beige-100); color: var(--blue-700);
+    display: grid; place-items: center; font-weight: 700; font-size: 11px;
+    margin-top: 2px;
+  }
+  @media (max-width: 900px) { .format-grid { grid-template-columns: 1fr; } }
+
+  /* REVIEWS */
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .review-card {
+    background: var(--white); border-radius: var(--radius-lg);
+    padding: 32px; box-shadow: var(--shadow-sm);
+    display: flex; flex-direction: column;
+    border: 1px solid rgba(11, 30, 63, 0.06);
+  }
+  .stars { color: #E5A93B; font-size: 16px; letter-spacing: 2px; margin-bottom: 16px; }
+  .review-text { color: var(--ink); font-size: 15.5px; line-height: 1.65; margin-bottom: 24px; flex-grow: 1; }
+  .review-author { display: flex; align-items: center; gap: 12px; }
+  .review-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--blue-100); color: var(--blue-700);
+    display: grid; place-items: center; font-weight: 700; font-family: 'Manrope', sans-serif;
+    flex-shrink: 0;
+  }
+  .review-author-info strong { display: block; font-size: 15px; }
+  .review-author-info span { color: var(--muted); font-size: 13px; }
+  @media (max-width: 900px) { .reviews-grid { grid-template-columns: 1fr; } }
+
+  /* FAQ */
+  .faq-list { max-width: 780px; margin: 0 auto; display: grid; gap: 12px; }
+  .faq-item {
+    background: var(--white); border-radius: var(--radius);
+    border: 1px solid rgba(11, 30, 63, 0.06);
+    overflow: hidden;
+  }
+  .faq-q {
+    padding: 22px 26px; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    font-weight: 600; font-size: 16.5px; gap: 16px;
+    font-family: 'Manrope', sans-serif;
+    transition: background .2s;
+  }
+  .faq-q:hover { background: var(--beige-100); }
+  .faq-icon {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--beige-100); color: var(--blue-700);
+    display: grid; place-items: center; flex-shrink: 0;
+    font-weight: 700; transition: transform .3s, background .3s;
+    font-size: 18px; line-height: 1;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--blue-900); color: var(--beige-500); }
+  .faq-a {
+    max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease;
+    color: var(--muted); font-size: 15.5px; padding: 0 26px;
+  }
+  .faq-item.open .faq-a { max-height: 500px; padding: 0 26px 24px; }
+
+  /* CONTACT */
+  .contact { background: var(--blue-900); color: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .contact-info h2 { color: var(--white); font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin-bottom: 16px; }
+  .contact-info > p { color: rgba(255,255,255,0.7); margin-bottom: 32px; font-size: 17px; }
+  .contact-methods { display: grid; gap: 16px; }
+  .contact-method {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 20px; border-radius: 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: background .2s;
+  }
+  .contact-method:hover { background: rgba(255,255,255,0.1); }
+  .contact-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--beige-500); color: var(--blue-900);
+    display: grid; place-items: center; font-size: 20px; flex-shrink: 0;
+  }
+  .contact-method span { display: block; font-size: 13px; color: rgba(255,255,255,0.6); }
+  .contact-method strong { font-size: 16px; font-weight: 600; }
+
+  .contact-form {
+    background: var(--white); color: var(--ink);
+    border-radius: var(--radius-lg); padding: 40px;
+    box-shadow: var(--shadow-lg);
+  }
+  .contact-form h3 { font-size: 22px; margin-bottom: 8px; }
+  .contact-form > p { color: var(--muted); font-size: 14.5px; margin-bottom: 24px; }
+  .form-row { margin-bottom: 16px; }
+  .form-row label { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 8px; color: var(--blue-900); }
+  .form-row input, .form-row select, .form-row textarea {
+    width: 100%; padding: 13px 16px;
+    border: 1px solid rgba(11, 30, 63, 0.12);
+    border-radius: 12px; font-family: inherit; font-size: 15px;
+    background: var(--bg); color: var(--ink);
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+    outline: none; border-color: var(--blue-500);
+    box-shadow: 0 0 0 3px rgba(42, 78, 150, 0.12);
+  }
+  .form-row textarea { resize: vertical; min-height: 88px; }
+  .contact-form .btn { width: 100%; margin-top: 8px; }
+  .form-note { font-size: 12.5px; color: var(--muted); margin-top: 14px; text-align: center; }
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-form { padding: 28px; }
+  }
+
+  /* FOOTER */
+  footer { background: #061631; color: rgba(255,255,255,0.6); padding: 40px 0; font-size: 14px; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a:hover { color: var(--white); }
+
+  /* SUCCESS */
+  .form-success {
+    display: none; padding: 16px; border-radius: 12px;
+    background: var(--beige-100); color: var(--blue-700);
+    font-weight: 600; text-align: center; margin-top: 12px; font-size: 14.5px;
+  }
+  .form-success.show { display: block; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">РЯ</span>
+      <span>Владислав Ким</span>
+    </a>
+    <div class="nav-links">
+      <a href="#about">Обо мне</a>
+      <a href="#pricing">Цены</a>
+      <a href="#programs">Программы</a>
+      <a href="#steps">Обучение</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#contact" class="nav-cta">Записаться</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge"><span class="badge-dot"></span> Опыт 5 лет · 8 стобалльников</div>
+      <h1>Русский язык <span class="accent">без зубрёжки</span><br>и лишнего стресса</h1>
+      <span class="spec">Подготовка к ОГЭ и ЕГЭ · 5–11 класс · Итоговое сочинение · Олимпиады</span>
+      <p class="lead">Помогаю не просто сдать экзамены, а понять предмет и полюбить его. Объясняю с жизненными примерами, мемами и играми — учу думать, а не заучивать правила.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Записаться на пробный урок</a>
+        <a href="#pricing" class="btn btn-secondary">Узнать цены</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo"></div>
+      <div class="hero-photo-label">
+        <strong>Владислав Ким</strong>
+        <span>Репетитор по русскому языку · НИУ ВШЭ → МГУ</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container stats-grid">
+    <div>
+      <div class="stat-num">5 лет</div>
+      <div class="stat-label">опыта подготовки к экзаменам</div>
+    </div>
+    <div>
+      <div class="stat-num">8</div>
+      <div class="stat-label">стобалльников на ЕГЭ</div>
+    </div>
+    <div>
+      <div class="stat-num">83%</div>
+      <div class="stat-label">учеников сдали на 80+ баллов</div>
+    </div>
+    <div>
+      <div class="stat-num">96</div>
+      <div class="stat-label">мой собственный балл ЕГЭ по русскому</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-text">
+      <span class="section-tag">Обо мне</span>
+      <h2>Здравствуйте! Меня зовут Владислав Ким 👋</h2>
+      <p>Я репетитор по русскому языку для 5–11 классов. Помогаю не просто сдать экзамены, а <strong>понять предмет и полюбить его</strong>. За 5 лет работы подготовил 8 стобалльников — 83% моих учеников сдали ЕГЭ на 80+.</p>
+      <p>Знаю всю систему ЕГЭ изнутри, прошёл своими силами все этапы, которые ожидают выпускника. Теперь с большой любовью помогаю преодолеть все сложности другим. Учу думать, а не зубрить.</p>
+    </div>
+    <ul class="about-list">
+      <li>Высшее образование: НИУ ВШЭ (бакалавриат), поступил в магистратуру МГУ</li>
+      <li>Золотая медаль, 96 баллов за ЕГЭ по русскому языку</li>
+      <li>Прошёл курс Tutor's School — лучшей школы для репетиторов</li>
+      <li>2 курса повышения квалификации во ВШЭ</li>
+      <li>Стаж работы с выпускниками — 5 лет</li>
+      <li>Только актуальные материалы: ФИПИ, Цыбулько, Дощинский, Статград + авторские задания</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Направления подготовки</span>
+      <h2>Открыт набор на 2026/2027 учебный год</h2>
+      <p>Почти все программы рассчитаны на 2 часа в неделю. Занятия проходят по будням в вечернее время.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program">
+        <div class="program-icon">📘</div>
+        <h4>ЕГЭ базовый уровень</h4>
+        <p>Для тех, кто не уверен в знаниях и хочет готовиться с нуля</p>
+      </div>
+      <div class="program">
+        <div class="program-icon">🚀</div>
+        <h4>ЕГЭ продвинутый уровень</h4>
+        <p>Для тех, кто сдал ОГЭ на отлично и пишет пробники на 60+</p>
+      </div>
+      <div class="program">
+        <div class="program-icon">📗</div>
+        <h4>ЕГЭ для 10 класса</h4>
+        <p>Начать подготовку заранее и не спешить в выпускном</p>
+      </div>
+      <div class="program">
+        <div class="program-icon">✏️</div>
+        <h4>ОГЭ по русскому</h4>
+        <p>Для уверенной сдачи на 4 или 5</p>
+      </div>
+      <div class="program">
+        <div class="program-icon">🖋️</div>
+        <h4>Итоговое сочинение</h4>
+        <p>Научу писать сочинения с нуля и по структуре</p>
+      </div>
+      <div class="program">
+        <div class="program-icon">🏆</div>
+        <h4>Олимпиады и поступление</h4>
+        <p>Подготовка к олимпиадам и вступительным в школы с гуманитарным уклоном</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Услуги и цены</span>
+      <h2>Форматы занятий</h2>
+      <p>Цены указаны за академический час (60 минут). Пробное занятие и диагностика знаний — бесплатно.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Индивидуальные занятия</h3>
+        <p class="desc">Для качественной отработки пробелов и достижения личных целей</p>
+        <div class="price-value">2 500 ₽</div>
+        <div class="price-unit">за 60 минут</div>
+        <ul class="price-features">
+          <li>Авторская программа под вашу цель</li>
+          <li>Разбор слабых тем и сочинений</li>
+          <li>Проверка домашних заданий заранее</li>
+          <li>Ежемесячная обратная связь родителям</li>
+          <li>Поддержка 24/7 в чате</li>
+        </ul>
+        <a href="#contact" class="btn btn-secondary">Записаться</a>
+      </div>
+
+      <div class="price-card featured">
+        <h3>Мини-группа</h3>
+        <p class="desc">Полный курс уроков и высокий балл по доступной цене</p>
+        <div class="price-value">1 400 ₽</div>
+        <div class="price-unit">за 60 минут</div>
+        <ul class="price-features">
+          <li>Небольшие группы по уровню</li>
+          <li>Лекция по теории + интерактивная практика</li>
+          <li>Все материалы в личном кабинете</li>
+          <li>Уникальная система мотивации: рейтинг учеников и «денежные занятия» до 3 000 ₽ за успехи</li>
+          <li>Полный курс подготовки за год</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Записаться</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Интенсив / Олимпиады</h3>
+        <p class="desc">Финальный рывок перед экзаменом или олимпиадой</p>
+        <div class="price-value">3 200 ₽</div>
+        <div class="price-unit">за 90 минут</div>
+        <ul class="price-features">
+          <li>Разбор всех типов заданий ЕГЭ/ОГЭ</li>
+          <li>Тренировочные варианты с проверкой</li>
+          <li>Работа над скоростью и вниманием</li>
+          <li>Разбор ошибок в сочинениях</li>
+          <li>Индивидуальные консультации по запросу</li>
+        </ul>
+        <a href="#contact" class="btn btn-secondary">Записаться</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section id="steps">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Как проходит обучение</span>
+      <h2>Понятный путь к результату</h2>
+      <p>От первого знакомства до уверенного ответа на экзамене — 4 шага.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-icon">🔍</div>
+        <h3>Диагностика</h3>
+        <p>Бесплатное занятие: определяю текущий уровень и пробелы ученика.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-icon">🗺️</div>
+        <h3>План подготовки</h3>
+        <p>Составляю авторскую программу под цель: экзамен, сочинение или олимпиаду.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-icon">📚</div>
+        <h3>Занятия онлайн</h3>
+        <p>Яндекс.Телемост, интерактивная доска и графический планшет. Лекция + практика.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-icon">🏆</div>
+        <h3>Результат</h3>
+        <p>Пробники, разбор ошибок и высокий балл на экзамене. При соблюдении рекомендаций — гарантия.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMAT -->
+<section class="format">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Формат занятий</span>
+      <h2>Что вас ждёт на уроках</h2>
+      <p>Онлайн, интерактивно и с полным сопровождением на каждом этапе.</p>
+    </div>
+    <div class="format-grid">
+      <div class="format-card">
+        <h3>🖥️ Технически всё продумано</h3>
+        <p>Ничего не отвлекает от учёбы — всё под рукой.</p>
+        <ul class="format-features">
+          <li>Занятия онлайн на платформе Яндекс.Телемост (60 минут)</li>
+          <li>Интерактивная доска и графический планшет</li>
+          <li>Личный кабинет: материалы, домашки и расписание в одном месте</li>
+          <li>Проверка ДЗ заранее — на уроке разбираем ошибки, а не проверяем</li>
+        </ul>
+      </div>
+      <div class="format-card">
+        <h3>💬 Поддержка и результат</h3>
+        <p>Вы не остаётесь один на один с предметом.</p>
+        <ul class="format-features">
+          <li>Поддержка 24/7: можно написать с любым вопросом — всегда на связи</li>
+          <li>Научу писать сочинения с нуля</li>
+          <li>Найду подход к каждому — под стиль и темп ученика</li>
+          <li>Уникальная система мотивации: рейтинг и денежные поощрения до 3 000 ₽</li>
+          <li>Обратная связь и сопровождение на всех этапах</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Отзывы</span>
+      <h2>Что говорят ученики и родители</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">«Дочь боялась сочинения как огня. За полгода с Владиславом она не только научилась писать по структуре, но и получила 89 баллов на ЕГЭ. Объясняет легко, с примерами, шутками — дочке нравилось ходить на уроки.»</p>
+        <div class="review-author">
+          <div class="review-avatar">О</div>
+          <div class="review-author-info">
+            <strong>Ольга Н.</strong>
+            <span>мама выпускницы, ЕГЭ 2024</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">«Готовился в мини-группе, думал, будет как в школе. А тут — рейтинг, «денежные занятия», реально хотелось быть лучше. Сдал ОГЭ на 5, пошёл в 10 класс с уверенностью.»</p>
+        <div class="review-author">
+          <div class="review-avatar">М</div>
+          <div class="review-author-info">
+            <strong>Максим К.</strong>
+            <span>ученик, 9 класс</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">«Сын занимался с Владиславом с 10 класса. Итог — 97 баллов и бюджет журфака. Отдельное спасибо за поддержку 24/7: можно было написать вечером с вопросом, и всегда получал ответ.»</p>
+        <div class="review-author">
+          <div class="review-avatar">А</div>
+          <div class="review-author-info">
+            <strong>Анна Т.</strong>
+            <span>мама выпускника, ЕГЭ 2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Частые вопросы</span>
+      <h2>Вопрос — ответ</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">В каком формате проходят занятия? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Только онлайн — на платформе Яндекс.Телемост, длительность 60 минут. Использую интерактивную доску и графический планшет. Занятия проходят по будням в вечернее время. Все материалы, домашки и расписание — в одном месте, в личном кабинете.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Сколько занятий в неделю? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Почти все программы рассчитаны на 2 часа в неделю — это оптимально, чтобы не перегружать и при этом стабильно двигаться к результату. При необходимости программу можно скорректировать.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Есть ли пробное занятие? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Да! Первое занятие и диагностика знаний — <strong>бесплатно</strong>. Познакомимся, определим уровень, обсудим цели и составим примерный план подготовки. Ни к чему не обязывает.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Что если нужно отменить или перенести урок? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Отмена без потерь — не позднее чем за 24 часа до занятия. В этом случае урок переносится на удобное время. При отмене менее чем за сутки занятие считается проведённым.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Даёте ли гарантии результата? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Гарантирую <strong>результат при соблюдении всех рекомендаций</strong>: посещении занятий, выполнении домашних заданий и работе над ошибками. Ежемесячно отслеживаем прогресс по пробным вариантам, при необходимости корректируем план.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Как работает «денежное занятие»? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Это часть системы мотивации. Ученики участвуют в рейтинге: за активность, выполнение домашек и рост баллов начисляются баллы. По итогам периода лучшие получают денежное поощрение — до 3 000 ₽. Приятный бонус к подготовке.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="container contact-grid">
+    <div class="contact-info">
+      <span class="section-tag">Контакты</span>
+      <h2>Запишитесь на бесплатную консультацию</h2>
+      <p>Расскажите о точке А вашего ребёнка, целях и ожиданиях — составлю план подготовки и забронирую место в группе.</p>
+      <div class="contact-methods">
+        <a href="tel:+79991234567" class="contact-method">
+          <div class="contact-icon">📞</div>
+          <div>
+            <span>Телефон</span>
+            <strong>+7 (999) 123-45-67</strong>
+          </div>
+        </a>
+        <a href="https://t.me/vladislav_kim_rus" class="contact-method">
+          <div class="contact-icon">✈️</div>
+          <div>
+            <span>Telegram</span>
+            <strong>@vladislav_kim_rus</strong>
+          </div>
+        </a>
+        <a href="https://wa.me/79991234567" class="contact-method">
+          <div class="contact-icon">💬</div>
+          <div>
+            <span>WhatsApp</span>
+            <strong>+7 (999) 123-45-67</strong>
+          </div>
+        </a>
+        <a href="mailto:vladislav.rus@example.com" class="contact-method">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <span>Email</span>
+            <strong>vladislav.rus@example.com</strong>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contactForm">
+      <h3>Оставить заявку</h3>
+      <p>Отвечу в течение 2 часов в рабочее время</p>
+      <div class="form-row">
+        <label for="name">Ваше имя</label>
+        <input type="text" id="name" name="name" placeholder="Как к вам обращаться" required>
+      </div>
+      <div class="form-row">
+        <label for="phone">Телефон</label>
+        <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+      </div>
+      <div class="form-row">
+        <label for="grade">Класс ученика</label>
+        <select id="grade" name="grade" required>
+          <option value="">Выберите класс</option>
+          <option>5–7 класс</option>
+          <option>8 класс</option>
+          <option>9 класс (ОГЭ)</option>
+          <option>10 класс</option>
+          <option>11 класс (ЕГЭ)</option>
+          <option>Итоговое сочинение</option>
+          <option>Олимпиада / вступительные</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="comment">Комментарий (необязательно)</label>
+        <textarea id="comment" name="comment" placeholder="Цель занятий, удобное время, вопросы..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Отправить</button>
+      <div class="form-success" id="formSuccess">Спасибо! Заявка отправлена — свяжусь с вами совсем скоро ✍️</div>
+      <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <div>© 2025 Владислав Ким · Репетитор по русскому языку</div>
+    <div class="footer-links">
+      <a href="#">Политика конфиденциальности</a>
+      <a href="#">Публичный договор</a>
+      <a href="#contact">Связаться</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  document.getElementById('contactForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('formSuccess').classList.add('show');
+    e.target.querySelector('button[type="submit"]').textContent = 'Отправлено ✓';
+    setTimeout(() => {
+      e.target.reset();
+      document.getElementById('formSuccess').classList.remove('show');
+      e.target.querySelector('button[type="submit"]').textContent = 'Отправить';
+    }, 4000);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.step, .price-card, .review-card, .program, .format-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .6s ease, transform .6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
