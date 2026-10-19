@@ -10,10 +10,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --blue-900: #0B1E3F;
-    --blue-700: #17356B;
-    --blue-500: #2A4E96;
-    --blue-100: #E8EEF9;
+    /* Обновленная, более насыщенная синяя палитра */
+    --blue-900: #06134A; 
+    --blue-700: #0F2B8C;
+    --blue-500: #1D4ED8;
+    --blue-100: #DBEAFE;
+    
     --beige-500: #E8D5B7;
     --beige-300: #F4E9D6;
     --beige-100: #FAF4EA;
@@ -23,9 +25,9 @@
     --white: #FFFFFF;
     --radius: 16px;
     --radius-lg: 24px;
-    --shadow-sm: 0 2px 12px rgba(11, 30, 63, 0.06);
-    --shadow-md: 0 12px 32px rgba(11, 30, 63, 0.10);
-    --shadow-lg: 0 24px 60px rgba(11, 30, 63, 0.14);
+    --shadow-sm: 0 2px 12px rgba(6, 19, 74, 0.06);
+    --shadow-md: 0 12px 32px rgba(6, 19, 74, 0.10);
+    --shadow-lg: 0 24px 60px rgba(6, 19, 74, 0.15);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -42,12 +44,31 @@
   img { max-width: 100%; display: block; }
   .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
+  /* АНИМАЦИИ */
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  @keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(29, 78, 216, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(29, 78, 216, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(29, 78, 216, 0); }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  .animate-float { animation: float 4s ease-in-out infinite; }
+  .animate-pulse { animation: pulse 2s infinite; }
+  
   /* NAV */
   .nav {
     position: sticky; top: 0; z-index: 100;
     background: rgba(253, 251, 247, 0.85);
     backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(11, 30, 63, 0.06);
+    border-bottom: 1px solid rgba(6, 19, 74, 0.06);
   }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
   .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-family: 'Manrope', sans-serif; }
@@ -65,7 +86,7 @@
     background: var(--blue-900); color: var(--white);
     font-weight: 600; font-size: 14px; transition: transform .2s, box-shadow .2s;
   }
-  .nav-cta:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); background: var(--blue-700); }
   @media (max-width: 900px) { .nav-links { display: none; } }
 
   /* HERO */
@@ -96,36 +117,27 @@
     display: inline-flex; align-items: center; justify-content: center;
     padding: 14px 26px; border-radius: 12px;
     font-weight: 600; font-size: 15px; cursor: pointer;
-    border: 1px solid transparent; transition: all .2s;
+    border: 1px solid transparent; transition: all .3s;
     font-family: inherit;
   }
   .btn-primary { background: var(--blue-900); color: var(--white); }
-  .btn-primary:hover { background: var(--blue-700); transform: translateY(-2px); box-shadow: var(--shadow-md); }
-  .btn-secondary { background: transparent; color: var(--blue-900); border-color: rgba(11, 30, 63, 0.15); }
-  .btn-secondary:hover { background: var(--white); border-color: var(--blue-900); }
+  .btn-primary:hover { background: var(--blue-700); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .btn-secondary { background: transparent; color: var(--blue-900); border-color: rgba(6, 19, 74, 0.15); }
+  .btn-secondary:hover { background: var(--white); border-color: var(--blue-900); transform: translateY(-3px); }
 
   /* ФОТО */
   .hero-photo-wrap { position: relative; display: flex; justify-content: center; }
   .hero-photo {
-    aspect-ratio: 1 / 1;
-    width: 100%;
-    max-width: 400px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--blue-100), var(--beige-300));
-    overflow: hidden;
-    box-shadow: var(--shadow-lg); 
-    position: relative;
+    aspect-ratio: 1 / 1; width: 100%; max-width: 400px;
+    border-radius: 50%; background: linear-gradient(135deg, var(--blue-100), var(--beige-300));
+    overflow: hidden; box-shadow: var(--shadow-lg); position: relative;
+    border: 4px solid var(--white);
   }
-  .hero-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
   .hero-photo-label {
     position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
     background: var(--white); padding: 14px 24px; border-radius: 14px;
-    box-shadow: var(--shadow-md); font-size: 14px; text-align: center;
-    white-space: nowrap;
+    box-shadow: var(--shadow-md); font-size: 14px; text-align: center; white-space: nowrap;
   }
   .hero-photo-label strong { display: block; font-family: 'Manrope', sans-serif; color: var(--blue-900); }
   .hero-photo-label span { color: var(--muted); font-size: 13px; }
@@ -151,9 +163,8 @@
   .stats { background: var(--blue-900); color: var(--white); padding: 72px 0; }
   .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
   .stat-num {
-    font-family: 'Manrope', sans-serif;
-    font-size: clamp(2rem, 4vw, 3rem); font-weight: 800;
-    color: var(--beige-500); line-height: 1; margin-bottom: 10px;
+    font-family: 'Manrope', sans-serif; font-size: clamp(2rem, 4vw, 3rem); 
+    font-weight: 800; color: var(--beige-500); line-height: 1; margin-bottom: 10px;
   }
   .stat-label { font-size: 15px; color: rgba(255,255,255,0.7); }
   @media (max-width: 720px) { .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; } }
@@ -167,14 +178,43 @@
     display: flex; gap: 12px; align-items: flex-start;
     padding: 16px 20px; background: var(--white); border-radius: 14px;
     box-shadow: var(--shadow-sm); font-size: 15px;
+    transition: transform 0.2s;
   }
+  .about-list li:hover { transform: translateX(5px); border-left: 3px solid var(--blue-500); }
   .about-list li::before {
-    content: '✓'; flex-shrink: 0;
-    width: 24px; height: 24px; border-radius: 50%;
-    background: var(--beige-100); color: var(--blue-700);
+    content: '✓'; flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+    background: var(--blue-100); color: var(--blue-700);
     display: grid; place-items: center; font-weight: 700; font-size: 13px;
   }
   @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  /* NEW RESULTS */
+  .results-bg { background: var(--white); }
+  .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .results-card {
+    background: var(--bg); border-radius: var(--radius-lg); padding: 40px;
+    border: 1px solid rgba(6, 19, 74, 0.06); display: flex; flex-direction: column; justify-content: center;
+  }
+  .results-card h3 { font-size: 24px; color: var(--blue-900); margin-bottom: 16px; }
+  .results-card p { color: var(--muted); font-size: 16px; margin-bottom: 24px; }
+  .mini-avatars { display: flex; gap: 12px; margin-top: auto; }
+  .mini-avatar {
+    width: 50px; height: 50px; border-radius: 50%; background: var(--blue-100);
+    color: var(--blue-700); display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 18px; font-family: 'Manrope'; border: 2px solid var(--white);
+    box-shadow: var(--shadow-sm); transition: transform 0.2s;
+  }
+  .mini-avatar:hover { transform: scale(1.1); z-index: 2; }
+  .student-case {
+    background: var(--bg); border-radius: 14px; padding: 16px 20px;
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;
+    border: 1px solid rgba(6, 19, 74, 0.06); transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .student-case:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .student-case b { color: var(--blue-900); font-size: 16px; }
+  .student-case span { font-size: 14px; color: var(--muted); }
+  .student-score { font-weight: 800; font-size: 20px; color: var(--blue-500); }
+  @media (max-width: 900px) { .results-grid { grid-template-columns: 1fr; } }
 
   /* PRICING */
   .pricing { background: var(--beige-100); }
@@ -182,26 +222,19 @@
   .price-card {
     background: var(--white); border-radius: var(--radius-lg);
     padding: 36px 32px; display: flex; flex-direction: column;
-    border: 1px solid rgba(11, 30, 63, 0.06);
-    transition: transform .25s, box-shadow .25s;
+    border: 1px solid rgba(6, 19, 74, 0.06); transition: transform .3s, box-shadow .3s;
   }
-  .price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .price-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--shadow-lg); border-color: var(--blue-100); }
   .price-card.featured { background: var(--blue-900); color: var(--white); position: relative; overflow: hidden; }
   .price-card.featured::before {
-    content: 'ПОПУЛЯРНОЕ';
-    position: absolute; top: 20px; right: -34px;
+    content: 'ПОПУЛЯРНОЕ'; position: absolute; top: 20px; right: -34px;
     background: var(--beige-500); color: var(--blue-900);
-    font-size: 11px; font-weight: 800; padding: 6px 40px;
-    transform: rotate(45deg); letter-spacing: 1px;
+    font-size: 11px; font-weight: 800; padding: 6px 40px; transform: rotate(45deg); letter-spacing: 1px;
   }
   .price-card h3 { font-size: 22px; margin-bottom: 8px; }
   .price-card .desc { color: var(--muted); font-size: 14px; margin-bottom: 24px; min-height: 42px; }
   .price-card.featured .desc { color: rgba(255,255,255,0.7); }
-  .price-value {
-    font-family: 'Manrope', sans-serif;
-    font-size: 40px; font-weight: 800; color: var(--blue-900);
-    margin-bottom: 6px; line-height: 1;
-  }
+  .price-value { font-family: 'Manrope', sans-serif; font-size: 40px; font-weight: 800; color: var(--blue-900); margin-bottom: 6px; line-height: 1; }
   .price-card.featured .price-value { color: var(--beige-500); }
   .price-unit { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
   .price-card.featured .price-unit { color: rgba(255,255,255,0.6); }
@@ -217,12 +250,12 @@
   /* PROGRAMS */
   .programs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 24px; }
   .program {
-    background: var(--white); border-radius: var(--radius);
-    padding: 26px 24px; border: 1px solid rgba(11, 30, 63, 0.06);
-    transition: transform .2s, box-shadow .2s;
+    background: var(--white); border-radius: var(--radius); padding: 26px 24px;
+    border: 1px solid rgba(6, 19, 74, 0.06); transition: transform .3s, box-shadow .3s, border-color .3s;
   }
-  .program:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-  .program-icon { font-size: 26px; margin-bottom: 12px; }
+  .program:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--blue-500); }
+  .program-icon { font-size: 26px; margin-bottom: 12px; display: inline-block; }
+  .program:hover .program-icon { animation: bounce 0.6s infinite; }
   .program h4 { font-size: 16px; margin-bottom: 6px; color: var(--blue-900); }
   .program p { font-size: 14px; color: var(--muted); }
   @media (max-width: 900px) { .programs-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -231,21 +264,19 @@
   /* STEPS */
   .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
   .step {
-    background: var(--white); border-radius: var(--radius);
-    padding: 32px 24px; border: 1px solid rgba(11, 30, 63, 0.06);
-    position: relative;
+    background: var(--white); border-radius: var(--radius); padding: 32px 24px;
+    border: 1px solid rgba(6, 19, 74, 0.06); position: relative; transition: transform .3s;
   }
+  .step:hover { transform: translateY(-5px); }
+  .step:hover .step-icon { animation: bounce 0.8s infinite; }
   .step-num {
-    position: absolute; top: -14px; left: 24px;
-    width: 36px; height: 36px; border-radius: 10px;
-    background: var(--blue-900); color: var(--beige-500);
-    display: grid; place-items: center; font-weight: 800;
-    font-family: 'Manrope', sans-serif;
+    position: absolute; top: -14px; left: 24px; width: 36px; height: 36px;
+    border-radius: 10px; background: var(--blue-900); color: var(--beige-500);
+    display: grid; place-items: center; font-weight: 800; font-family: 'Manrope', sans-serif;
   }
   .step-icon {
-    width: 52px; height: 52px; border-radius: 14px;
-    background: var(--beige-100); display: grid; place-items: center;
-    font-size: 24px; margin: 16px 0 20px;
+    width: 52px; height: 52px; border-radius: 14px; background: var(--beige-100);
+    display: grid; place-items: center; font-size: 24px; margin: 16px 0 20px;
   }
   .step h3 { font-size: 18px; margin-bottom: 10px; }
   .step p { color: var(--muted); font-size: 14.5px; }
@@ -256,41 +287,34 @@
   .format { background: var(--beige-100); }
   .format-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .format-card {
-    background: var(--white); border-radius: var(--radius-lg);
-    padding: 36px 32px; display: flex; flex-direction: column;
-    border: 1px solid rgba(11, 30, 63, 0.06);
+    background: var(--white); border-radius: var(--radius-lg); padding: 36px 32px;
+    display: flex; flex-direction: column; border: 1px solid rgba(6, 19, 74, 0.06);
   }
   .format-card h3 { font-size: 22px; margin-bottom: 10px; color: var(--blue-900); }
   .format-card > p { color: var(--muted); font-size: 15px; margin-bottom: 22px; }
   .format-features { list-style: none; display: grid; gap: 12px; }
-  .format-features li {
-    font-size: 14.5px; display: flex; gap: 10px; align-items: flex-start;
-  }
+  .format-features li { font-size: 14.5px; display: flex; gap: 10px; align-items: flex-start; }
   .format-features li::before {
-    content: '✓'; flex-shrink: 0;
-    width: 20px; height: 20px; border-radius: 50%;
-    background: var(--beige-100); color: var(--blue-700);
-    display: grid; place-items: center; font-weight: 700; font-size: 11px;
-    margin-top: 2px;
+    content: '✓'; flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%;
+    background: var(--blue-100); color: var(--blue-700);
+    display: grid; place-items: center; font-weight: 700; font-size: 11px; margin-top: 2px;
   }
   @media (max-width: 900px) { .format-grid { grid-template-columns: 1fr; } }
 
   /* REVIEWS */
   .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .review-card {
-    background: var(--white); border-radius: var(--radius-lg);
-    padding: 32px; box-shadow: var(--shadow-sm);
-    display: flex; flex-direction: column;
-    border: 1px solid rgba(11, 30, 63, 0.06);
+    background: var(--white); border-radius: var(--radius-lg); padding: 32px;
+    box-shadow: var(--shadow-sm); display: flex; flex-direction: column;
+    border: 1px solid rgba(6, 19, 74, 0.06); transition: transform .3s;
   }
+  .review-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
   .stars { color: #E5A93B; font-size: 16px; letter-spacing: 2px; margin-bottom: 16px; }
   .review-text { color: var(--ink); font-size: 15.5px; line-height: 1.65; margin-bottom: 24px; flex-grow: 1; }
   .review-author { display: flex; align-items: center; gap: 12px; }
   .review-avatar {
-    width: 44px; height: 44px; border-radius: 50%;
-    background: var(--blue-100); color: var(--blue-700);
-    display: grid; place-items: center; font-weight: 700; font-family: 'Manrope', sans-serif;
-    flex-shrink: 0;
+    width: 44px; height: 44px; border-radius: 50%; background: var(--blue-100); color: var(--blue-700);
+    display: grid; place-items: center; font-weight: 700; font-family: 'Manrope', sans-serif; flex-shrink: 0;
   }
   .review-author-info strong { display: block; font-size: 15px; }
   .review-author-info span { color: var(--muted); font-size: 13px; }
@@ -298,31 +322,19 @@
 
   /* FAQ */
   .faq-list { max-width: 780px; margin: 0 auto; display: grid; gap: 12px; }
-  .faq-item {
-    background: var(--white); border-radius: var(--radius);
-    border: 1px solid rgba(11, 30, 63, 0.06);
-    overflow: hidden;
-  }
+  .faq-item { background: var(--white); border-radius: var(--radius); border: 1px solid rgba(6, 19, 74, 0.06); overflow: hidden; }
   .faq-q {
-    padding: 22px 26px; cursor: pointer;
-    display: flex; justify-content: space-between; align-items: center;
-    font-weight: 600; font-size: 16.5px; gap: 16px;
-    font-family: 'Manrope', sans-serif;
-    transition: background .2s;
+    padding: 22px 26px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    font-weight: 600; font-size: 16.5px; gap: 16px; font-family: 'Manrope', sans-serif; transition: background .2s;
   }
   .faq-q:hover { background: var(--beige-100); }
   .faq-icon {
-    width: 28px; height: 28px; border-radius: 50%;
-    background: var(--beige-100); color: var(--blue-700);
-    display: grid; place-items: center; flex-shrink: 0;
-    font-weight: 700; transition: transform .3s, background .3s;
-    font-size: 18px; line-height: 1;
+    width: 28px; height: 28px; border-radius: 50%; background: var(--beige-100); color: var(--blue-700);
+    display: grid; place-items: center; flex-shrink: 0; font-weight: 700;
+    transition: transform .3s, background .3s; font-size: 18px; line-height: 1;
   }
   .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--blue-900); color: var(--beige-500); }
-  .faq-a {
-    max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease;
-    color: var(--muted); font-size: 15.5px; padding: 0 26px;
-  }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease; color: var(--muted); font-size: 15.5px; padding: 0 26px; }
   .faq-item.open .faq-a { max-height: 500px; padding: 0 26px 24px; }
 
   /* CONTACT */
@@ -332,40 +344,28 @@
   .contact-info > p { color: rgba(255,255,255,0.7); margin-bottom: 32px; font-size: 17px; }
   .contact-methods { display: grid; gap: 16px; }
   .contact-method {
-    display: flex; align-items: center; gap: 16px;
-    padding: 16px 20px; border-radius: 14px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    transition: background .2s;
+    display: flex; align-items: center; gap: 16px; padding: 16px 20px; border-radius: 14px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); transition: background .2s, transform .2s;
   }
-  .contact-method:hover { background: rgba(255,255,255,0.1); }
+  .contact-method:hover { background: rgba(255,255,255,0.1); transform: translateX(5px); }
   .contact-icon {
-    width: 44px; height: 44px; border-radius: 12px;
-    background: var(--beige-500); color: var(--blue-900);
+    width: 44px; height: 44px; border-radius: 12px; background: var(--beige-500); color: var(--blue-900);
     display: grid; place-items: center; font-size: 20px; flex-shrink: 0;
   }
   .contact-method span { display: block; font-size: 13px; color: rgba(255,255,255,0.6); }
   .contact-method strong { font-size: 16px; font-weight: 600; }
 
-  .contact-form {
-    background: var(--white); color: var(--ink);
-    border-radius: var(--radius-lg); padding: 40px;
-    box-shadow: var(--shadow-lg);
-  }
+  .contact-form { background: var(--white); color: var(--ink); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-lg); }
   .contact-form h3 { font-size: 22px; margin-bottom: 8px; }
   .contact-form > p { color: var(--muted); font-size: 14.5px; margin-bottom: 24px; }
   .form-row { margin-bottom: 16px; }
   .form-row label { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 8px; color: var(--blue-900); }
   .form-row input, .form-row select, .form-row textarea {
-    width: 100%; padding: 13px 16px;
-    border: 1px solid rgba(11, 30, 63, 0.12);
-    border-radius: 12px; font-family: inherit; font-size: 15px;
-    background: var(--bg); color: var(--ink);
-    transition: border-color .2s, box-shadow .2s;
+    width: 100%; padding: 13px 16px; border: 1px solid rgba(6, 19, 74, 0.12);
+    border-radius: 12px; font-family: inherit; font-size: 15px; background: var(--bg); color: var(--ink); transition: border-color .2s, box-shadow .2s;
   }
   .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
-    outline: none; border-color: var(--blue-500);
-    box-shadow: 0 0 0 3px rgba(42, 78, 150, 0.12);
+    outline: none; border-color: var(--blue-500); box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
   }
   .form-row textarea { resize: vertical; min-height: 88px; }
   .contact-form .btn { width: 100%; margin-top: 8px; }
@@ -376,16 +376,15 @@
   }
 
   /* FOOTER */
-  footer { background: #061631; color: rgba(255,255,255,0.6); padding: 40px 0; font-size: 14px; }
+  footer { background: #040C30; color: rgba(255,255,255,0.6); padding: 40px 0; font-size: 14px; }
   .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
   .footer-links { display: flex; gap: 24px; }
   .footer-links a:hover { color: var(--white); }
 
   /* SUCCESS */
   .form-success {
-    display: none; padding: 16px; border-radius: 12px;
-    background: var(--beige-100); color: var(--blue-700);
-    font-weight: 600; text-align: center; margin-top: 12px; font-size: 14.5px;
+    display: none; padding: 16px; border-radius: 12px; background: #D1FAE5; color: #065F46;
+    font-weight: 600; text-align: center; margin-top: 12px; font-size: 14.5px; border: 1px solid #34D399;
   }
   .form-success.show { display: block; }
 </style>
@@ -401,9 +400,9 @@
     </a>
     <div class="nav-links">
       <a href="#about">Обо мне</a>
+      <a href="#results">Результаты</a>
       <a href="#pricing">Цены</a>
       <a href="#programs">Программы</a>
-      <a href="#steps">Обучение</a>
       <a href="#reviews">Отзывы</a>
       <a href="#faq">FAQ</a>
     </div>
@@ -415,7 +414,7 @@
 <header class="hero">
   <div class="container hero-grid">
     <div>
-      <div class="badge"><span class="badge-dot"></span> Опыт 5 лет · 8 стобалльников</div>
+      <div class="badge"><span class="badge-dot animate-pulse"></span> Опыт 5 лет · 8 стобалльников</div>
       <h1>Русский язык <span class="accent">без зубрёжки</span><br>и лишнего стресса</h1>
       <span class="spec">Подготовка к ОГЭ и ЕГЭ · 5–11 класс · Итоговое сочинение · Олимпиады</span>
       <p class="lead">Помогаю не просто сдать экзамены, а понять предмет и полюбить его. Объясняю с жизненными примерами, мемами и играми — учу думать, а не заучивать правила.</p>
@@ -425,7 +424,7 @@
       </div>
     </div>
     <div class="hero-photo-wrap">
-      <div class="hero-photo">
+      <div class="hero-photo animate-float">
         <img src="photo.jpg" alt="Владислав Ким">
       </div>
       <div class="hero-photo-label">
@@ -475,6 +474,54 @@
       <li>Стаж работы с выпускниками — 5 лет</li>
       <li>Только актуальные материалы: ФИПИ, Цыбулько, Дощинский, Статград + авторские задания</li>
     </ul>
+  </div>
+</section>
+
+<!-- NEW RESULTS BLOCK -->
+<section id="results" class="results-bg">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Результаты учеников</span>
+      <h2>Цифры, которые говорят сами за себя</h2>
+      <p>Мои ученики не просто сдают экзамены, а получают баллы, достаточные для поступления в ведущие вузы страны на бюджет.</p>
+    </div>
+    <div class="results-grid">
+      <div class="results-card">
+        <h3>Топ учеников по баллам ЕГЭ</h3>
+        <p>Реальные результаты выпускников последних лет.</p>
+        <div class="student-case">
+          <div><b>Артем М.</b><br><span>ЕГЭ 2024</span></div>
+          <div class="student-score">100</div>
+        </div>
+        <div class="student-case">
+          <div><b>Мария К.</b><br><span>ЕГЭ 2023</span></div>
+          <div class="student-score">98</div>
+        </div>
+        <div class="student-case">
+          <div><b>Даниил С.</b><br><span>ЕГЭ 2024</span></div>
+          <div class="student-score">97</div>
+        </div>
+        <div class="student-case" style="margin-bottom: 0;">
+          <div><b>Алина В.</b><br><span>ЕГЭ 2025</span></div>
+          <div class="student-score">95</div>
+        </div>
+      </div>
+      <div class="results-card">
+        <h3>8 стобалльников</h3>
+        <p>За 5 лет работы я подготовил 8 учеников, которые сдали ЕГЭ по русскому языку на максимальные 100 баллов. Это результат системной работы и уникальной методики.</p>
+        <div class="mini-avatars">
+          <div class="mini-avatar">А</div>
+          <div class="mini-avatar">М</div>
+          <div class="mini-avatar">Д</div>
+          <div class="mini-avatar">С</div>
+          <div class="mini-avatar">К</div>
+          <div class="mini-avatar">+3</div>
+        </div>
+        <p style="margin-top: 24px; font-weight: 600; color: var(--blue-900);">
+          ⭐️ 83% всех моих учеников сдают ЕГЭ на 80+ баллов
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -799,17 +846,21 @@
       </div>
     </div>
 
+    <!-- ОБНОВЛЕННАЯ ФОРМА -->
     <form class="contact-form" id="contactForm">
       <h3>Оставить заявку</h3>
-      <p>Отвечу в течение 2 часов в рабочее время</p>
+      <p>Заполните форму, и я свяжусь с вами в WhatsApp</p>
+      
       <div class="form-row">
         <label for="name">Ваше имя</label>
         <input type="text" id="name" name="name" placeholder="Как к вам обращаться" required>
       </div>
+      
       <div class="form-row">
         <label for="phone">Телефон</label>
         <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
       </div>
+      
       <div class="form-row">
         <label for="grade">Класс ученика</label>
         <select id="grade" name="grade" required>
@@ -823,12 +874,38 @@
           <option>Олимпиада / вступительные</option>
         </select>
       </div>
+
+      <!-- НОВЫЕ ПОЛЯ -->
+      <div class="form-row">
+        <label for="format">Формат занятий</label>
+        <select id="format" name="format" required>
+          <option value="">Выберите формат</option>
+          <option>Индивидуальные занятия</option>
+          <option>Мини-группа</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="frequency">Сколько раз в неделю хотите заниматься?</label>
+        <select id="frequency" name="frequency" required>
+          <option value="">Выберите частоту</option>
+          <option>1 раз в неделю</option>
+          <option>2 раза в неделю</option>
+          <option>3 раза в неделю и чаще</option>
+          <option>Пока не знаю</option>
+        </select>
+      </div>
+
       <div class="form-row">
         <label for="comment">Комментарий (необязательно)</label>
         <textarea id="comment" name="comment" placeholder="Цель занятий, удобное время, вопросы..."></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Отправить</button>
-      <div class="form-success" id="formSuccess">Спасибо! Заявка отправлена — свяжусь с вами совсем скоро ✍️</div>
+      
+      <button type="submit" class="btn btn-primary">Отправить в WhatsApp</button>
+      
+      <div class="form-success" id="formSuccess">
+        Перенаправляем вас в WhatsApp... 🚀
+      </div>
       <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
     </form>
   </div>
@@ -847,6 +924,7 @@
 </footer>
 
 <script>
+  // Аккордеон FAQ
   document.querySelectorAll('.faq-q').forEach(q => {
     q.addEventListener('click', () => {
       const item = q.parentElement;
@@ -856,17 +934,49 @@
     });
   });
 
-  document.getElementById('contactForm').addEventListener('submit', (e) => {
+  // Отправка формы в WhatsApp
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    document.getElementById('formSuccess').classList.add('show');
-    e.target.querySelector('button[type="submit"]').textContent = 'Отправлено ✓';
+    
+    // Собираем данные из полей
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const grade = document.getElementById('grade').value;
+    const format = document.getElementById('format').value;
+    const frequency = document.getElementById('frequency').value;
+    const comment = document.getElementById('comment').value;
+    
+    // Ваш номер WhatsApp (без плюса и скобок)
+    const waPhone = '79004409749'; 
+    
+    // Формируем красивое сообщение
+    let text = `Здравствуйте! Хочу записаться на занятие с сайта.%0A%0A`;
+    text += `👤 *Имя:* ${name}%0A`;
+    text += `📞 *Телефон:* ${phone}%0A`;
+    text += `🎓 *Класс:* ${grade}%0A`;
+    text += `💼 *Формат:* ${format}%0A`;
+    text += `📅 *Частота:* ${frequency}%0A`;
+    
+    if (comment.trim() !== '') {
+      text += `📝 *Комментарий:* ${comment}%0A`;
+    }
+    
+    // Показываем сообщение об успехе
+    const successMsg = document.getElementById('formSuccess');
+    successMsg.classList.add('show');
+    
+    // Перенаправляем в WhatsApp (откроется в новой вкладке)
+    const waUrl = `https://wa.me/${waPhone}?text=${text}`;
+    window.open(waUrl, '_blank');
+    
+    // Очищаем форму через 3 секунды и прячем сообщение
     setTimeout(() => {
-      e.target.reset();
-      document.getElementById('formSuccess').classList.remove('show');
-      e.target.querySelector('button[type="submit"]').textContent = 'Отправить';
-    }, 4000);
+      this.reset();
+      successMsg.classList.remove('show');
+    }, 3000);
   });
 
+  // Анимация появления элементов при скролле
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -876,7 +986,7 @@
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.step, .price-card, .review-card, .program, .format-card').forEach(el => {
+  document.querySelectorAll('.step, .price-card, .review-card, .program, .format-card, .student-case').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity .6s ease, transform .6s ease';
